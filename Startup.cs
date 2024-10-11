@@ -55,31 +55,7 @@ namespace reportesApi
 
 
 
-            // Get EmailstoreSettings
-            //services.AddSingleton<IEmailstoreSettings>(sp =>
-            //    sp.GetRequiredService<IOptions<EmailstoreSettings>>().Value);
-
-            // Get Services LB
-            services.AddSingleton<LoginService>();
-            // services.AddSingleton<FuncionesExtraService>();
-            // services.AddSingleton<ComprasService>();
-            // services.AddSingleton<PersonaService>();
-            // services.AddSingleton<CarreraService>();
-            // services.AddSingleton<MateriaService>();
-            services.AddSingleton<AlumnoService>();
-            services.AddSingleton<ProveedorService>();
-            services.AddSingleton<InsumoService>();
-            services.AddSingleton<AlmacenService>();
-
-            // services.AddSingleton<CalificacionService>();
-            // services.AddSingleton<ProfesorService>();
-            // services.AddSingleton<GrupoService>();
-            // services.AddSingleton<GrupoAlumnoService>();
-            // services.AddSingleton<MateriaAlumnoService>();
-            // services.AddSingleton<GrupoMateriaService>();
-
-
-
+            services.AddSingleton<SedesService>();
             services.AddCors();
 
             services.AddControllers()

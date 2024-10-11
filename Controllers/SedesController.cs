@@ -18,11 +18,11 @@ namespace reportesApi.Controllers
 {
    
     [Route("api")]
-    public class AlmacenController: ControllerBase
+    public class SedesController: ControllerBase
     {
    
-        private readonly AlmacenService _AlmacenService;
-        private readonly ILogger<AlmacenController> _logger;
+        private readonly SedesService _SedesService;
+        private readonly ILogger<SedesController> _logger;
   
         private readonly IJwtAuthenticationService _authService;
         private readonly IWebHostEnvironment _hostingEnvironment;
@@ -30,8 +30,8 @@ namespace reportesApi.Controllers
 
         Encrypt enc = new Encrypt();
 
-        public AlmacenController(AlmacenService AlmacenService, ILogger<AlmacenController> logger, IJwtAuthenticationService authService) {
-            _AlmacenService = AlmacenService;
+        public SedesController(SedesService SedesService, ILogger<SedesController> logger, IJwtAuthenticationService authService) {
+            _SedesService = SedesService;
             _logger = logger;
        
             _authService = authService;
@@ -43,15 +43,15 @@ namespace reportesApi.Controllers
         }
 
 
-        [HttpPost("InsertAlmacen")]
-        public IActionResult InsertAlmacen([FromBody] InsertAlmacenModel req )
+        [HttpPost("InsertSede")]
+        public IActionResult InsertSedes([FromBody] InsertSedesModel req )
         {
             var objectResponse = Helper.GetStructResponse();
             try
             {
                 objectResponse.StatusCode = (int)HttpStatusCode.OK;
                 objectResponse.success = true;
-                objectResponse.message = _AlmacenService.InsertAlmacen(req);
+                objectResponse.message = _SedesService.InsertSedes(req);
 
             }
 
@@ -63,11 +63,11 @@ namespace reportesApi.Controllers
             return new JsonResult(objectResponse);
         }
 
-        [HttpGet("GetAlmacen")]
-        public IActionResult GetAlmacen()
+        [HttpGet("GetSedes")]
+        public IActionResult GetSedes()
         {
             var objectResponse = Helper.GetStructResponse();
-            var resultado = _AlmacenService.GetAlmacen();
+            var resultado = _SedesService.GetSedes();
 
             try
             {
@@ -89,15 +89,15 @@ namespace reportesApi.Controllers
             return new JsonResult(objectResponse);
         }
 
-        [HttpPut("UpdateAlmacen")]
-        public IActionResult UpdateAlmacen([FromBody] UpdateAlmacenModel req )
+        [HttpPut("UpdateSede")]
+        public IActionResult UpdaateSedes([FromBody] UpdateSedesModel req )
         {
             var objectResponse = Helper.GetStructResponse();
             try
             {
                 objectResponse.StatusCode = (int)HttpStatusCode.OK;
                 objectResponse.success = true;
-                objectResponse.message = _AlmacenService.UpdateAlmacen(req);
+                objectResponse.message = _SedesService.UpdateSedes(req);
 
                 ;
 
@@ -111,8 +111,8 @@ namespace reportesApi.Controllers
             return new JsonResult(objectResponse);
         }
 
-        [HttpDelete("DeleteAlmacen/{id}")]
-        public IActionResult DeleteAlmacen([FromRoute] int id )
+        [HttpDelete("DeleteSedes/{id}")]
+        public IActionResult DeleteSedes([FromRoute] int id )
         {
             var objectResponse = Helper.GetStructResponse();
             try
@@ -121,7 +121,7 @@ namespace reportesApi.Controllers
                 objectResponse.success = true;
                 objectResponse.message = "data cargado con exito";
 
-                _AlmacenService.DeleteAlmacen(id);
+                _SedesService.DeleteSedes(id);
 
             }
 
